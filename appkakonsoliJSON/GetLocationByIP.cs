@@ -29,8 +29,6 @@ namespace appkakonsoliJSON
 
         public string LocationName(string IPAddress)
         {
-            //object location = new GetLocationByIP();
-
             string url = URL + IPAddress + @"?fields=city,lat,lon";
             string html = "";
 
