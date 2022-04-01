@@ -1,7 +1,9 @@
 ﻿using System;
 
 
-namespace appkakonsoliJSON // Note: actual namespace depends on the project name.
+
+namespace appkakonsoliJSON
+
 {
     internal class Program
     {
@@ -9,12 +11,11 @@ namespace appkakonsoliJSON // Note: actual namespace depends on the project name
             {}
         static void Main(string[] args)
         {
+
             GetLocationByIP getLocation =  new GetLocationByIP();
 
             string ipAddress = getLocation.CheckMyIP();
             getLocation.LocationName(ipAddress);
-
-            
         }
     }
 }

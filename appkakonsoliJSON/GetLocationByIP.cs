@@ -22,9 +22,19 @@ namespace appkakonsoliJSON
 
         public string CheckMyIP()
         {
-            //zwraca nam nasz adresIP publiczny od dostawcy ISP
-            var externalip = new WebClient().DownloadString("https://ipv4.icanhazip.com/").TrimEnd();
-            return externalip;
+            string url = "https://ipv4.icanhazip.com/";
+            HttpClient client = new HttpClient();
+            string ipAddress = "";
+            using (HttpResponseMessage response = client.GetAsync(url).Result) 
+            {
+                using (HttpContent content = response.Content)
+                {
+                    ipAddress = content.ReadAsStringAsync().Result.TrimEnd();
+                }
+            }
+            //var externalip = new WebClient().DownloadString("https://ipv4.icanhazip.com/").TrimEnd();
+
+            return ipAddress;
         }
 
         public string LocationName(string IPAddress)
@@ -41,7 +51,6 @@ namespace appkakonsoliJSON
             {
                 html = reader.ReadToEnd();
             }
-
 
             GetLocationByIP? getLocation =
                JsonSerializer.Deserialize<GetLocationByIP>(html);
