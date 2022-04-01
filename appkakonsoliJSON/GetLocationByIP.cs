@@ -32,12 +32,11 @@ namespace appkakonsoliJSON
                     ipAddress = content.ReadAsStringAsync().Result.TrimEnd();
                 }
             }
-            //var externalip = new WebClient().DownloadString("https://ipv4.icanhazip.com/").TrimEnd();
 
             return ipAddress;
         }
 
-        public string LocationName(string IPAddress)
+        public object LocationName(string IPAddress)
         {
             string url = URL + IPAddress + @"?fields=city,lat,lon";
             string html = "";
@@ -55,12 +54,7 @@ namespace appkakonsoliJSON
             GetLocationByIP? getLocation =
                JsonSerializer.Deserialize<GetLocationByIP>(html);
 
-            Console.WriteLine($"Town: {getLocation?.City}");
-            Console.WriteLine($"Lattitude: {getLocation?.Latitude}");
-            Console.WriteLine($"Longtitude: {getLocation?.Longtitude}");
-
-
-            return "";
+            return getLocation;
         }
     }
 

@@ -15,7 +15,7 @@ namespace appkakonsoliJSON
             GetLocationByIP getLocation =  new GetLocationByIP();
 
             string ipAddress = getLocation.CheckMyIP();
-            getLocation.LocationName(ipAddress);
+            object dupa = getLocation.LocationName(ipAddress);
         }
     }
 }
